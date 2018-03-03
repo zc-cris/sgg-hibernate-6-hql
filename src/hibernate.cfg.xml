@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+		
+<hibernate-configuration>
+	
+    <session-factory>
+    	
+    	<!-- 配置连接数据库的基本信息 -->
+    	<property name="connection.username">scott</property>
+    	<property name="connection.password">scott</property>
+    	<property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+    	<property name="connection.url">jdbc:oracle:thin:@localhost:1521:orcl</property>
+    
+    	<!-- 配置hibernat的基本信息 -->
+    	<!-- hibernate 所使用的数据库方言 -->
+    	<property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+    	<!-- 执行操作时，是否在控制台打印sql语句 -->
+    	<property name="show_sql">true</property>
+    	<!-- 是否对sql语句进行格式化显示 -->
+    	<property name="format_sql">true</property>
+    	<!-- 制定自动生成数据表的策略，即程序运行可以在数据库自动生成数据表 -->
+    	<property name="hbm2ddl.auto">update</property>
+    	<!-- 删除对象对应的数据后，使这个对象的OID为null -->
+    	<property name="use_identifier_rollback">true</property>
+    	
+    	<!-- 如果控制台重复建表，并且提示重复名或者外键名什么的，就把这行添加上，值为用户名即可 -->
+    	<property name="default_schema">scott</property>
+    	
+    	<!-- 配置c3p0数据库连接池 -->
+    	<!-- 
+    	<property name="c3p0.max_size">10</property>
+    	<property name="c3p0.min_size">5</property>
+    	<property name="c3p0.acquire_increment">2</property>
+    	
+    	<property name="c3p0.idle_test_period">2000</property>
+    	<property name="c3p0.timeout">2000</property>
+    	<property name="c3p0.max_statements">10</property>
+    	
+    	 -->
+    	 
+    	<!-- 引入对象关系映射文件 -->
+    	<mapping resource="com/zc/cris/test/enties/Department.hbm.xml" />
+    	<mapping resource="com/zc/cris/test/enties/Employee.hbm.xml" />
+    	
+    	</session-factory>
+</hibernate-configuration>
