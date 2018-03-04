@@ -40,9 +40,29 @@
     	
     	 -->
     	 
+    	 <!-- 启用二级缓存 -->
+    	 <property name="cache.use_second_level_cache">true</property>
+    	 
+    	 <!-- 配置启用二级缓存的产品插件 -->
+    	 <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+    	 
+    	 <!-- 启用查询缓存 -->
+    	 <property name="cache.use_query_cache">true</property>
+    	
+    	<!-- 配置管理session的方式 -->
+    	<property name="current_session_context_class">thread</property>
+    	
+    	 
     	<!-- 引入对象关系映射文件 -->
     	<mapping resource="com/zc/cris/test/enties/Department.hbm.xml" />
     	<mapping resource="com/zc/cris/test/enties/Employee.hbm.xml" />
+    	
+    	<!-- 配置哪些数据需要使用到二级缓存(类级别和集合级别的二级缓存配置) -->
+    	<class-cache usage="read-write" class="com.zc.cris.test.enties.Employee"/>
+    	
+    	<class-cache usage="read-only" class="com.zc.cris.test.enties.Department"/>
+    	<collection-cache usage="read-only" collection="com.zc.cris.test.enties.Department.emps"/>
+    	
     	
     	</session-factory>
 </hibernate-configuration>

@@ -3,6 +3,10 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="com.zc.cris.test.enties.Employee" table="GG_EMPLOYEE">
+    	<!-- 
+    	<cache usage="read-only"/>
+    	 -->
+    	 
         <id name="id" type="java.lang.Integer">
             <column name="ID" />
             <generator class="native" />
